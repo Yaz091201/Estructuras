@@ -16,7 +16,8 @@ struct nodo{
 };
 
 void insertar_lista(nodo*&, int);
-
+float multi_mayor_menor(nodo *);
+float suma_lista(nodo *);
 
 int main(){
 nodo*lista=NULL;
@@ -48,7 +49,30 @@ do{
 	         gotoxy(50,9);cin>>res;
             }while(res!='n');
 	break;
-	
+		case 2:
+			system("cls");
+			gotoxy(45,2);
+			cout<<"***********************************";
+			gotoxy(56,3);
+			cout<<"Sumar datos";
+			gotoxy(45,5);
+			cout<<"El resultado de la suma es-> "<<suma_lista(lista);
+			gotoxy(45,7);
+			cout<<"***********************************";
+			getch();
+		break;
+		case 3:
+			system("cls");
+			gotoxy(45,2);
+			cout<<"***********************************";
+			gotoxy(47,3);
+			cout<<"Multiplicar Dato mayor y menor";
+			gotoxy(45,5);
+			cout<<"La multiplicacion es-> "<<multi_mayor_menor(lista);
+			gotoxy(45,7);
+			cout<<"***********************************";
+			getch();
+		break;	
 	}
 	gotoxy(50,10);cout<<endl<<"Desea regresar al menu? s/n: "<<endl;
 	        gotoxy(55,9);cin>>res;
@@ -75,5 +99,29 @@ while ((aux1 !=NULL)&&(aux1->dato<n)){
 		nvo_nodo->siguiente=aux1;
 		cout<<"\tElemento "<<n<<" insertado en la lista correctamente."<<endl;
 }
+float multi_mayor_menor(nodo *lista ){
+	float multiplicacion;
+	float mayor=0;
+	float menor=999999;
+	while(lista != NULL){
+		if((lista->dato) > mayor){
+			
+			mayor = lista->dato;	
+		}
+		if((lista->dato) < menor){
+			menor = lista->dato;
+		}
+		lista = lista->siguiente;
+	}
+	multiplicacion=mayor*menor;
+	return multiplicacion;
+}
 
-
+float suma_lista(nodo *lista){
+	float suma;
+	while(lista != NULL){
+		suma =suma+lista->dato;
+		lista = lista->siguiente;
+	}
+	return suma;
+}
